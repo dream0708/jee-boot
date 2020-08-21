@@ -33,8 +33,8 @@ jee-boot-api 是一个基于`SpringBoot`，快速构建`RESTful API`工程的脚
 ## 支持我 给我动力
 <table>
     <tr>
-        <td><img src="doc/pay.jpg"/></td>
-        <td><img src="doc/qq.jpg"/></td>
+        <td><img src="https://gitee.com/dream0708/jee-boot/blob/master/doc/pay.jpg"/></td>
+        <td><img src="https://gitee.com/dream0708/jee-boot/blob/master/doc/qq.jpg"/></td>
     </tr>
 </table> 
 
@@ -67,11 +67,11 @@ apidoc | 0.25.0 | 文档编写工具 |
 6. 访问接口文档 http://localhost:8092/jee/apidoc/index.html
 
 ## 文档截图
-![Alt text](doc/1.jpg)
-![Alt text](doc/2.jpg)
-![Alt text](doc/3.jpg)
-![Alt text](doc/4.jpg)
-![Alt text](doc/5.jpg)
+![Alt text](https://gitee.com/dream0708/jee-boot/blob/master/doc/1.jpg)
+![Alt text](https://gitee.com/dream0708/jee-boot/blob/master/doc/2.jpg)
+![Alt text](https://gitee.com/dream0708/jee-boot/blob/master/doc/3.jpg)
+![Alt text](https://gitee.com/dream0708/jee-boot/blob/master/doc/4.jpg)
+![Alt text](https://gitee.com/dream0708/jee-boot/blob/master/doc/5.jpg)
 
 ## 开发建议
 - 开发规范可以参考阿里巴巴Java开发手册（[最新版下载](https://github.com/alibaba/p3c))

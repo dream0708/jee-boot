@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jee.boot.controller.AbstractBaseController;
-import com.jee.boot.datasource.second.vo.MobileDto;
+import com.jee.boot.datasource.second.vo.MobileVo;
 import com.jee.rest.base.annotation.logger.ResponseLogger;
 import com.jee.rest.base.response.biz.BizResponse;
 
@@ -28,7 +28,7 @@ public class TestController extends AbstractBaseController{
 	   @RequestMapping("/data/format")
 	   public BizResponse testFastJSONFormat() {
 
-	        MobileDto dto = new MobileDto() ;
+	        MobileVo dto = new MobileVo() ;
 	        dto.setMobile("13555555");
 	        dto.setLeftMoney(125.85855);
 	        dto.setWinRate(0.12225);
