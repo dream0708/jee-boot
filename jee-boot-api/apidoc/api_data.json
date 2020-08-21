@@ -1,0 +1,509 @@
+[
+  {
+    "type": "get",
+    "url": "/xx",
+    "title": "公共部分",
+    "version": "1.0.0",
+    "name": "commonReturnExample",
+    "description": "<p>公共返回</p>",
+    "group": "公共部分",
+    "success": {
+      "fields": {
+        "返回(200)": [
+          {
+            "group": "返回(200)",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p><ins>600 会话无效或者会话过期 <br>632 hash校验不通过(必传没有传或者必传传错了) <br> 411  入参非法(不为空判断不通过、正则表达式不通过、超过最大值最小值设置等) <br>512 异步请求超时<br> 408 会话服务器异常<br> 530 Tc调用异常透传<br> 404 找不到结果集 <br> 一般小于400的为业务code 每个接口会单独给出</ins></p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>响应信息</p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "hash",
+            "description": "<p>重发标志 <br> 若请求hash必须要传 则返回hash一定不为空 前端需要把不为空hash保存起来供下个接口使用</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/main/java/com/jee/boot/controller/user/ApiDocController.java",
+    "groupTitle": "公共部分",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8092/jee/xx"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "sessionid",
+            "description": "<p style=\"color:#c678dd\">会话标示</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "hash",
+            "description": "<p style=\"color:#c678dd\">防重发标识 </p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
+    "url": "/admin/check_pwd",
+    "title": "2校验密码",
+    "version": "1.0.0",
+    "name": "checkPwd",
+    "description": "<p>用户管理-校验密码</p>",
+    "group": "用户管理",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>密码</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回(200)": [
+          {
+            "group": "返回(200)",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>0 请求成功<br></p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>信息</p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "hash",
+            "description": "<p style=\"color:#c678dd\">防重发标识</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"msg\": \"请求成功\",\n  \"hash\": \"abcd1233333\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/main/java/com/jee/boot/controller/user/AdminUserController.java",
+    "groupTitle": "用户管理",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8092/jee/admin/check_pwd"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "hsession",
+            "description": "<p style=\"color:#c678dd\">会话标示</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "hash",
+            "description": "<p style=\"color:#c678dd\">防重发标识 </p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
+    "url": "/admin/info",
+    "title": "5角色权限验证",
+    "version": "1.0.0",
+    "name": "checkUserRights",
+    "description": "<p>用户管理-角色权限验证</p>",
+    "group": "用户管理",
+    "permission": [
+      {
+        "name": "roles[admin&guest]  &  permissions[query]"
+      }
+    ],
+    "success": {
+      "fields": {
+        "返回(200)": [
+          {
+            "group": "返回(200)",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>0 请求成功<br></p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "Object",
+            "optional": false,
+            "field": "result",
+            "description": "<p>信息</p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "result.id",
+            "description": "<p>id</p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "result.icon",
+            "description": "<p>头像</p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "result.email",
+            "description": "<p>邮箱</p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "result.nickName",
+            "description": "<p>昵称</p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>信息</p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "hash",
+            "description": "<p style=\"color:#c678dd\">防重发标识</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/main/java/com/jee/boot/controller/user/AdminUserController.java",
+    "groupTitle": "用户管理",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8092/jee/admin/info"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "hsession",
+            "description": "<p style=\"color:#c678dd\">会话标示</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
+    "url": "/admin/info",
+    "title": "4获取管理员信息",
+    "version": "1.0.0",
+    "name": "getUserInfo",
+    "description": "<p>用户管理-获取管理员信息</p>",
+    "group": "用户管理",
+    "success": {
+      "fields": {
+        "返回(200)": [
+          {
+            "group": "返回(200)",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>0 请求成功<br></p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "Object",
+            "optional": false,
+            "field": "result",
+            "description": "<p>信息</p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "result.id",
+            "description": "<p>id</p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "result.icon",
+            "description": "<p>头像</p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "result.email",
+            "description": "<p>邮箱</p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "result.nickName",
+            "description": "<p>昵称</p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>信息</p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "hash",
+            "description": "<p style=\"color:#c678dd\">防重发标识</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/main/java/com/jee/boot/controller/user/AdminUserController.java",
+    "groupTitle": "用户管理",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8092/jee/admin/info"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "hsession",
+            "description": "<p style=\"color:#c678dd\">会话标示</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
+    "url": "/admin/login",
+    "title": "1登录",
+    "version": "1.0.0",
+    "name": "login",
+    "description": "<p>用户管理-登录</p>",
+    "group": "用户管理",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "uuid",
+            "description": "<p>序列号</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>用户名</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>密码</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "yzm",
+            "description": "<p>验证码</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回(200)": [
+          {
+            "group": "返回(200)",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>0 请求成功<br></p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>返回信息</p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "hsession",
+            "description": "<p>header会话</p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "hash",
+            "description": "<p>防重发token</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"msg\": \"请求成功\",\n  \"hash\": \"abcd1233333\" , \n  \"hsession\": \"abcd1233333\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/main/java/com/jee/boot/controller/user/AdminUserController.java",
+    "groupTitle": "用户管理",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8092/jee/admin/login"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/admin/reset_pwd",
+    "title": "3重置密码",
+    "version": "1.0.0",
+    "name": "resetPwd",
+    "description": "<p>用户管理-重置密码</p>",
+    "group": "用户管理",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>密码</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "返回(200)": [
+          {
+            "group": "返回(200)",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>0 请求成功<br></p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>信息</p>"
+          },
+          {
+            "group": "返回(200)",
+            "type": "String",
+            "optional": false,
+            "field": "hash",
+            "description": "<p style=\"color:#c678dd\">防重发标识</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"code\": 0,\n  \"msg\": \"请求成功\",\n  \"hash\": \"abcd1233333\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/main/java/com/jee/boot/controller/user/AdminUserController.java",
+    "groupTitle": "用户管理",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:8092/jee/admin/reset_pwd"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "hsession",
+            "description": "<p style=\"color:#c678dd\">会话标示</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "hash",
+            "description": "<p style=\"color:#c678dd\">防重发标识 </p>"
+          }
+        ]
+      }
+    }
+  }
+]

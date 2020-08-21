@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jee.boot.datasource.first.dao.UmsAdminPermissionRelationMapper">
+
+
+   <!-- <select id="queryUmsPermissionByAdminId" resultType="com.jee.boot.datasource.first.entity.UmsPermission">
+        select b.*
+        from ums_admin_permission_relation a
+        inner join ums_permission b on a.permission_id = b.id
+        where b.status = 1
+        and a.admin_id = #{adminId,jdbcType=VARCHAR}
+    </select>-->
+    <select id="queryUmsRolePermissionByAdminId" resultType="com.jee.boot.datasource.first.entity.UmsPermission">
+        select b.*
+        from ums_role_permission_relation a
+        inner join ums_permission b on b.id = a.permission_id
+        inner join ums_role c on c.id = a.role_id
+        inner join ums_admin_role_relation d on d.role_id = c.id
+        where b.status = 1
+        and c.status = 1
+        and d.admin_id = #{adminId,jdbcType=VARCHAR}
+    </select>
+</mapper>

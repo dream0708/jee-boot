@@ -1,0 +1,46 @@
+
+.svn
+.idea
+.settings/*
+/indexes/*
+/target/*
+/*/target/*
+/*/settings/*
+*/target/*
+/target/
+/*/bin/*
+/bin/
+
+target
+
+.classpath
+.project
+*.jar
+*.war
+*.ear
+*.class
+/target
+/.settings
+
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+/*/*-dev.properties
+**/*-dev.properties
+**/application-dev.properties
